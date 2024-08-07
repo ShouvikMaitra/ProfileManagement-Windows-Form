@@ -14,10 +14,42 @@ namespace ProfileManagement
         {
             InitializeComponent();
             PopulateCountryCodes();
+            PopulateCityDropdown();
             tb_username.TextChanged += tb_username_TextChanged;
             tb_confirmpassword.TextChanged += tb_confirmpassword_TextChanged;
         }
+        private void PopulateCityDropdown()
+        {
+            // Add a list of Indian cities to the ComboBox
+            var cities = new List<string>
+    {
+        "Mumbai",
+        "Delhi",
+        "Bangalore",
+        "Hyderabad",
+        "Chennai",
+        "Kolkata",
+        "Pune",
+        "Ahmedabad",
+        "Jaipur",
+        "Surat",
+        "Lucknow",
+        "Kanpur",
+        "Nagpur",
+        "Indore",
+        "Bhopal",
+        "Vadodara",
+        "Coimbatore",
+        "Patna",
+        "Agra",
+        "Vijayawada",
+        "Visakhapatnam"
+        // Add more cities as needed
+    };
 
+            cb_city.DataSource = cities;
+            cb_city.DropDownStyle = ComboBoxStyle.DropDown; // Allow user input
+        }
 
 
         private void btn_register_Click(object sender, EventArgs e)
@@ -25,25 +57,25 @@ namespace ProfileManagement
             string firstName = tb_FirstName.Text;
             string middleName = tb_MiddleName.Text;
             string lastName = tb_LastName.Text;
-            string mobile = cb_numbercode.SelectedItem.ToString() + tb_MobileNo.Text;
+            string PhoneNumber = cb_numbercode.SelectedItem.ToString() + tb_MobileNo.Text;
             string email = tb_email.Text;
             string address = rb_Address.Text;
-            string city = tb_city.SelectedItem.ToString();
+            string city = cb_city.Text;
             DateTime dob = guna2DateTimePicker1.Value;
             string gender = gb_gender.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
             string education = string.Join(", ", gb_education.Controls.OfType<CheckBox>().Where(c => c.Checked).Select(c => c.Text));
             string username = tb_username.Text;
             string password = tb_password.Text;
 
-            string query = "INSERT INTO Users (FirstName, MiddleName, LastName, Mobile, Email, Address, City, DOB, Gender, Education, UserName, Password) " +
-                           "VALUES (@FirstName, @MiddleName, @LastName, @Mobile, @Email, @Address, @City, @DOB, @Gender, @Education, @UserName, @Password)";
+            string query = "INSERT INTO Users (FirstName, MiddleName, LastName, PhoneNumber, Email, Address, City, DOB, Gender, Education, UserName, Password) " +
+                           "VALUES (@FirstName, @MiddleName, @LastName, @PhoneNumber, @Email, @Address, @City, @DOB, @Gender, @Education, @UserName, @Password)";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
         new SqlParameter("@FirstName", firstName),
         new SqlParameter("@MiddleName", middleName),
         new SqlParameter("@LastName", lastName),
-        new SqlParameter("@Mobile", mobile),
+        new SqlParameter("@PhoneNumber", PhoneNumber),
         new SqlParameter("@Email", email),
         new SqlParameter("@Address", address),
         new SqlParameter("@City", city),
@@ -140,7 +172,7 @@ namespace ProfileManagement
             return education.TrimEnd(',');
         }
 
-    
+
         private void PopulateCountryCodes()
         {
             var countryCodes = new List<string>
@@ -152,7 +184,9 @@ namespace ProfileManagement
     };
 
             cb_numbercode.DataSource = countryCodes;
+            cb_numbercode.DropDownStyle = ComboBoxStyle.DropDownList; // Ensure users can only select from the list
         }
+
 
         private async void tb_username_TextChanged(object sender, EventArgs e)
         {
@@ -204,6 +238,17 @@ namespace ProfileManagement
                 lbl_passwordStatus.Text = "Passwords match";
                 lbl_passwordStatus.ForeColor = System.Drawing.Color.Green;
             }
+        }
+
+        private void linkLabel_login_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Instantiate the LoginForm
+            LoginForm loginForm = new LoginForm();
+
+            // Show the LoginForm
+            loginForm.Show();
+
+      
         }
 
     }

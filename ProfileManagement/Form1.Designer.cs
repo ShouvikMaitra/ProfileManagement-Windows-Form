@@ -35,7 +35,7 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel_login = new System.Windows.Forms.LinkLabel();
             this.rb_Address = new System.Windows.Forms.RichTextBox();
             this.gb_gender = new System.Windows.Forms.GroupBox();
             this.rbtn_other = new Guna.UI2.WinForms.Guna2RadioButton();
@@ -43,6 +43,8 @@
             this.rbtn_male = new Guna.UI2.WinForms.Guna2RadioButton();
             this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbl_passwordStatus = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbl_usernameStatus = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btn_register = new Guna.UI2.WinForms.Guna2Button();
             this.tb_password = new Guna.UI2.WinForms.Guna2TextBox();
             this.label_passowrd = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -56,7 +58,7 @@
             this.checkBox_12th = new System.Windows.Forms.CheckBox();
             this.checkBox_10th = new System.Windows.Forms.CheckBox();
             this.label_city = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.tb_city = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cb_city = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label_DOB = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label_address = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.tb_email = new Guna.UI2.WinForms.Guna2TextBox();
@@ -72,8 +74,6 @@
             this.label_firstname = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lbl_usernameStatus = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lbl_passwordStatus = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.gb_gender.SuspendLayout();
@@ -140,18 +140,19 @@
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
             // 
-            // linkLabel1
+            // linkLabel_login
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
-            this.linkLabel1.Location = new System.Drawing.Point(177, 72);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(43, 16);
-            this.linkLabel1.TabIndex = 4;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Log in";
+            this.linkLabel_login.AutoSize = true;
+            this.linkLabel_login.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel_login.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.linkLabel_login.Location = new System.Drawing.Point(177, 72);
+            this.linkLabel_login.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel_login.Name = "linkLabel_login";
+            this.linkLabel_login.Size = new System.Drawing.Size(43, 16);
+            this.linkLabel_login.TabIndex = 4;
+            this.linkLabel_login.TabStop = true;
+            this.linkLabel_login.Text = "Log in";
+            this.linkLabel_login.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_login_LinkClicked);
             // 
             // rb_Address
             // 
@@ -266,7 +267,7 @@
             this.guna2Panel2.Controls.Add(this.label_username);
             this.guna2Panel2.Controls.Add(this.gb_education);
             this.guna2Panel2.Controls.Add(this.label_city);
-            this.guna2Panel2.Controls.Add(this.tb_city);
+            this.guna2Panel2.Controls.Add(this.cb_city);
             this.guna2Panel2.Controls.Add(this.guna2DateTimePicker1);
             this.guna2Panel2.Controls.Add(this.label_DOB);
             this.guna2Panel2.Controls.Add(this.gb_gender);
@@ -283,7 +284,7 @@
             this.guna2Panel2.Controls.Add(this.label_lastname);
             this.guna2Panel2.Controls.Add(this.tb_FirstName);
             this.guna2Panel2.Controls.Add(this.label_firstname);
-            this.guna2Panel2.Controls.Add(this.linkLabel1);
+            this.guna2Panel2.Controls.Add(this.linkLabel_login);
             this.guna2Panel2.Controls.Add(this.guna2HtmlLabel4);
             this.guna2Panel2.Controls.Add(this.guna2HtmlLabel3);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -292,6 +293,24 @@
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(563, 597);
             this.guna2Panel2.TabIndex = 1;
+            // 
+            // lbl_passwordStatus
+            // 
+            this.lbl_passwordStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_passwordStatus.Location = new System.Drawing.Point(379, 485);
+            this.lbl_passwordStatus.Name = "lbl_passwordStatus";
+            this.lbl_passwordStatus.Size = new System.Drawing.Size(3, 2);
+            this.lbl_passwordStatus.TabIndex = 32;
+            this.lbl_passwordStatus.Text = null;
+            // 
+            // lbl_usernameStatus
+            // 
+            this.lbl_usernameStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_usernameStatus.Location = new System.Drawing.Point(29, 485);
+            this.lbl_usernameStatus.Name = "lbl_usernameStatus";
+            this.lbl_usernameStatus.Size = new System.Drawing.Size(3, 2);
+            this.lbl_usernameStatus.TabIndex = 31;
+            this.lbl_usernameStatus.Text = null;
             // 
             // btn_register
             // 
@@ -477,21 +496,21 @@
             this.label_city.TabIndex = 22;
             this.label_city.Text = "City";
             // 
-            // tb_city
+            // cb_city
             // 
-            this.tb_city.BackColor = System.Drawing.Color.Transparent;
-            this.tb_city.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.tb_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tb_city.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_city.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_city.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tb_city.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.tb_city.ItemHeight = 30;
-            this.tb_city.Location = new System.Drawing.Point(229, 289);
-            this.tb_city.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_city.Name = "tb_city";
-            this.tb_city.Size = new System.Drawing.Size(116, 36);
-            this.tb_city.TabIndex = 21;
+            this.cb_city.BackColor = System.Drawing.Color.Transparent;
+            this.cb_city.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cb_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_city.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cb_city.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cb_city.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cb_city.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cb_city.ItemHeight = 30;
+            this.cb_city.Location = new System.Drawing.Point(229, 289);
+            this.cb_city.Margin = new System.Windows.Forms.Padding(4);
+            this.cb_city.Name = "cb_city";
+            this.cb_city.Size = new System.Drawing.Size(116, 36);
+            this.cb_city.TabIndex = 21;
             // 
             // label_DOB
             // 
@@ -717,22 +736,6 @@
             this.guna2HtmlLabel3.TabIndex = 2;
             this.guna2HtmlLabel3.Text = "Get Started";
             // 
-            // lbl_usernameStatus
-            // 
-            this.lbl_usernameStatus.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_usernameStatus.Location = new System.Drawing.Point(29, 485);
-            this.lbl_usernameStatus.Name = "lbl_usernameStatus";
-            this.lbl_usernameStatus.Size = new System.Drawing.Size(3, 2);
-            this.lbl_usernameStatus.TabIndex = 31;
-            // 
-            // lbl_passwordStatus
-            // 
-            this.lbl_passwordStatus.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_passwordStatus.Location = new System.Drawing.Point(379, 485);
-            this.lbl_passwordStatus.Name = "lbl_passwordStatus";
-            this.lbl_passwordStatus.Size = new System.Drawing.Size(3, 2);
-            this.lbl_passwordStatus.TabIndex = 32;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -780,7 +783,7 @@
 		private Guna.UI2.WinForms.Guna2HtmlLabel label_middlename;
 		private Guna.UI2.WinForms.Guna2HtmlLabel label_lastname;
 		private Guna.UI2.WinForms.Guna2HtmlLabel label_firstname;
-		private System.Windows.Forms.LinkLabel linkLabel1;
+		private System.Windows.Forms.LinkLabel linkLabel_login;
 		private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
 		private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
 		private Guna.UI2.WinForms.Guna2TextBox tb_email;
@@ -790,7 +793,7 @@
 		private Guna.UI2.WinForms.Guna2TextBox tb_MiddleName;
 		private Guna.UI2.WinForms.Guna2TextBox tb_FirstName;
 		private Guna.UI2.WinForms.Guna2HtmlLabel label_city;
-		private Guna.UI2.WinForms.Guna2ComboBox tb_city;
+		private Guna.UI2.WinForms.Guna2ComboBox cb_city;
 		private System.Windows.Forms.GroupBox gb_education;
 		private System.Windows.Forms.CheckBox checkBox_masters;
 		private System.Windows.Forms.CheckBox checkBox_bachelor;
