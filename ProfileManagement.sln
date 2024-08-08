@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfileManagement", "ProfileManagement\ProfileManagement.csproj", "{4FC67BD1-9193-4A3F-BAB9-6C6B8368B397}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ProfileManagementSetup", "ProfileManagementSetup\ProfileManagementSetup.vdproj", "{CD9732A2-4C3E-45BB-9343-C50C26091854}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{4FC67BD1-9193-4A3F-BAB9-6C6B8368B397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FC67BD1-9193-4A3F-BAB9-6C6B8368B397}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FC67BD1-9193-4A3F-BAB9-6C6B8368B397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD9732A2-4C3E-45BB-9343-C50C26091854}.Debug|Any CPU.ActiveCfg = Debug
+		{CD9732A2-4C3E-45BB-9343-C50C26091854}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

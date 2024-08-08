@@ -28,36 +28,54 @@ namespace ProfileManagement
             return dt.Rows[0][0].ToString() == "1";
         }
 
-        private void linkLabel_Signup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // Open the registration form
-            Form1 registrationForm = new Form1();
-            registrationForm.Show();
+		private void linkLabel_Signup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			
+			Form1 registrationForm = new Form1();
 
-            // Optionally close the login form
-            this.Close();
-        }
+		
+			registrationForm.FormClosed += (s, args) =>
+			{
+			
+				this.Show();
+				this.BringToFront(); 
+				this.Focus();        // Set focus back to the LoginForm
+			};
 
-        private void btn_login_Click(object sender, EventArgs e)
-        {
-            string username = tb_username.Text;
-            string password = tb_password.Text;
+			this.Hide(); // Hide the login form
+			registrationForm.Show(); // Show the registration form
+		}
 
-            if (ValidateUser(username, password))
-            {
-                MessageBox.Show("Login successful!");
 
-                // Create an instance of HomeForm and pass user details if needed
-                HomeForm homeForm = new HomeForm(username);
-                homeForm.Show();
+		private void btn_login_Click(object sender, EventArgs e)
+		{
+			string username = tb_username.Text;
+			string password = tb_password.Text;
 
-                // Close the login form
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Invalid username or password.");
-            }
-        }
-    }
+			if (ValidateUser(username, password))
+			{
+				MessageBox.Show("Login successful!");
+
+				
+				HomeForm homeForm = new HomeForm(username);
+
+				homeForm.FormClosed += (s, args) =>
+				{
+					this.Show();
+					this.BringToFront();
+					this.Focus();
+				};
+
+				
+				this.Hide();
+				homeForm.Show();
+			}
+			else
+			{
+				MessageBox.Show("Invalid username or password.");
+			}
+		}
+
+
+	}
 }

@@ -6,7 +6,7 @@ namespace ProfileManagement
 {
     public static class DatabaseHelper
     {
-        private static string connectionString = "Server=BOOTCAMP\\SQL19;Database=UserProfileDB;User Id=sa;Password=123456;";
+        private static string connectionString = "Server=mssql-180622-0.cloudclusters.net,10093;Database=UserProfileDB;User Id=shouvik;Password=Svk@1234;";
 
         public static void ExecuteQuery(string query, SqlParameter[] parameters)
         {
